@@ -7,8 +7,9 @@ const jumpHeight = -250
 const up = Vector2(0,-1)
 const gravity = 15
 
-onready var sprite = $Sprite
+onready var idle = $Idle
 onready var walk = $Walk
+onready var collision = $CollisionShape2D
 onready var animationPlayer = $AnimationPlayer
 
 var motion = Vector2()
@@ -19,23 +20,25 @@ func _physics_process(delta):
 	var friction = false
 	
 	if Input.is_action_pressed("ui_right"):
-		sprite.visible = false
+		idle.visible = false
 		walk.visible = true
-		sprite.flip_h = false
+		idle.flip_h = false
 		walk.flip_h = false
+		collision.position.x = -5
 		animationPlayer.play("Walk")
 		motion.x = min(motion.x + moveSpeed, maxSpeed)
 	
 	elif Input.is_action_pressed("ui_left"):
-		sprite.visible = false
+		idle.visible = false
 		walk.visible = true
-		sprite.flip_h = true
+		idle.flip_h = true
 		walk.flip_h = true
+		collision.position.x = 5
 		animationPlayer.play("Walk")
 		motion.x = max(motion.x - moveSpeed, -maxSpeed)
 	
 	else:
-		sprite.visible = true
+		idle.visible = true
 		walk.visible = false
 		animationPlayer.play("Idle")
 		friction = true
