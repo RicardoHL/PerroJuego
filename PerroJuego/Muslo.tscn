@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Imagenes/Recolectables/muslo(1).png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Muslo.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 10.0499
+
+[sub_resource type="Animation" id=2]
+resource_name = "Flotar"
+length = 2.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Muslo:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.2, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Muslo:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[node name="Muslo" type="Node2D"]
+
+[node name="Muslo2D" type="Area2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Muslo" type="Sprite" parent="Muslo2D"]
+position = Vector2( 0, -3 )
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Muslo2D"]
+shape = SubResource( 1 )
+
+[node name="AnimationMuslo" type="AnimationPlayer" parent="Muslo2D"]
+anims/Flotar = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[connection signal="body_entered" from="Muslo2D" to="Muslo2D" method="_on_Muslo2D_body_entered"]
