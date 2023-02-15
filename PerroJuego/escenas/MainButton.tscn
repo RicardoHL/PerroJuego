@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="Button" type="Button"]
+margin_left = 64.0
+margin_right = 164.0
+margin_bottom = 20.0
+size_flags_horizontal = 4
+text = "Nueva Partida"
