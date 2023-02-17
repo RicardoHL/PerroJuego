@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Imagenes/Fondo/ground_2.png" type="Texture" id=1]
 [ext_resource path="res://Imagenes/Fondo/plant.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Zombie.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scripts/Puntuacion.gd" type="Script" id=16]
 [ext_resource path="res://Caja.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scripts/Salud.gd" type="Script" id=18]
 
 [sub_resource type="TileSet" id=1]
 
@@ -967,13 +968,16 @@ current = true
 zoom = Vector2( 0.35, 0.35 )
 script = ExtResource( 16 )
 
-[node name="Corazon1" parent="Player/Camera2D" instance=ExtResource( 13 )]
+[node name="Salud" type="Node2D" parent="Player/Camera2D"]
+script = ExtResource( 18 )
+
+[node name="Corazon1" parent="Player/Camera2D/Salud" instance=ExtResource( 13 )]
 position = Vector2( -165, -94 )
 
-[node name="Corazon2" parent="Player/Camera2D" instance=ExtResource( 13 )]
+[node name="Corazon2" parent="Player/Camera2D/Salud" instance=ExtResource( 13 )]
 position = Vector2( -147, -94 )
 
-[node name="Corazon3" parent="Player/Camera2D" instance=ExtResource( 13 )]
+[node name="Corazon3" parent="Player/Camera2D/Salud" instance=ExtResource( 13 )]
 position = Vector2( -129, -94 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Player/Camera2D"]

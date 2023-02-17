@@ -122,9 +122,9 @@ func _on_AnimationPlayer_animation_finished(Attack):
 		atacando=false
 		
 func add_Score():
-	
+	var healNode = get_tree().get_root().find_node("Salud",true,false)
+	healNode.heal()
 	var musloNode = get_tree().get_root().find_node("Camera2D",true,false)
-	
 	musloNode.handleMeatCollected()
 	
 
