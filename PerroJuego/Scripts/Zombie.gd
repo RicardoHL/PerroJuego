@@ -13,7 +13,8 @@ onready var idle = $Idle
 onready var collision = $CollisionShape2D
 onready var animationZombie = $AnimationZombie
 onready var hitboxAtaque = $Area_Ataque/HitBoxAtaque
-onready var rangoVision = $AreaVision/RangoVision
+onready var hitboxChoque = $Area_Choque/HitBoxChoque
+onready var rangoVision = $Area_Vision/RangoVision
 onready var spriteCono = $Sprite
 
 
@@ -175,24 +176,15 @@ func _on_AreaVision_body_exited(body):
 	pass # Replace with function body.
 		
 
-func _on_Area_Vision_body_exited(body):
-	if(body.name == "Player"):
-		no_detectado = true
-		print("Deja de atacar")
-
-
 func _on_AnimationZombie_animation_finished(nombre):
 	if(nombre=="Attack" and no_detectado==false):
 		animationZombie.play("Attack")
 	elif(nombre=="Attack"):
 		animationZombie.play("WalkE")
 		mov = true
-
-
-
-		
-	
 	pass # Replace with function body.
 
-
-
+func _on_Area_Choque_body_entered(body):
+	
+	
+	pass # Replace with function body.
